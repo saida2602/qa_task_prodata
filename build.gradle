@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.saida'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.cucumber:cucumber-java:7.13.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.13.0' // JUnit 4 ilə uyumlu
+
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.14.1'
+    testImplementation 'io.appium:java-client:8.5.1' // Mobil tətbiqlər üçün
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.9.2'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+
+}
+
+tasks.named('test') {
+    include '**/TestRunner.class'
+}
