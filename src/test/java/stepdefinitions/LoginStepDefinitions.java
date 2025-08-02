@@ -142,5 +142,4 @@ public class LoginStepDefinitions {
         waitSeconds(5);
         driver.quit();
     }
-
 }
